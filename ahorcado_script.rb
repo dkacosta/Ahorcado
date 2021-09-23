@@ -12,7 +12,16 @@ end
 
 # Inicializa las variables principales
 def inicializar
-  @palabra = "gata"
+  categoria = gets.to_i
+  case categoria
+  when 1
+    load 'nombres_script.rb'
+  when 2
+    load 'apellidos_script.rb'
+  else
+    load 'verbos_script.rb'
+  end
+
   @respuesta = []
   @intentos = 0
   # Inicializar @limite segun longitud de la palabra
@@ -60,10 +69,12 @@ def responder
     titulo "Perdiste! Intentalo de nuevo"
   else
     titulo "Felicidades, has ganado!!!"
-    puts "La palabra es: #{@palabra}\n\n"
   end
+  puts "La palabra es: #{@palabra}\n\n"
 end
 
 # Ejecucion del programa
+system("clear")
+titulo "Elige una categoria\n1-Nombres\n2-Apellidos\n3-Verbos"
 inicializar
 responder
